@@ -1,6 +1,9 @@
 # vmware-vmmon-fix
 This shell script fix VMWare 17.x "cannot open /dev/vmmon" error message when trying to start a virtual machine in Ubuntu.
-This is an automation script for oficial VMWare solution steps: ["Cannot open /dev/vmmon: No such file or directory" error when powering on a VM - 2146460](https://kb.vmware.com/s/article/2146460)
+The script is an automation for oficial VMWare solution steps: ["Cannot open /dev/vmmon: No such file or directory" error when powering on a VM - 2146460](https://kb.vmware.com/s/article/2146460)
+
+This error occurs in Linux systems with UEFI and BIOS secure boot enabled, disabling secure boot in the BIOS fixes the problem but would leave your computer vulnerable to some types of attacks.
+I recommend you follow these steps to fix the error and keep the secure boot enabled:
 
 # Supported Ubuntu versions
 - Ubuntu 21.10 (tested)
