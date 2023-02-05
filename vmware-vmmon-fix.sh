@@ -10,14 +10,14 @@ fi
 
 echo
 echo "Generate and sign $MOK_PRIV and $MOK_DER files"
-openssl req -new -x509 -newkey rsa:2048 -keyout ~/vmware-mok.priv -outform DER -out ~/vmware-mok.der -nodes -days 36500 -subj "/CN=VMware/"
-/usr/src/linux-headers-`uname -r`/scripts/sign-file sha256 ~/vmware-mok.priv ~/vmware-mok.der $(modinfo -n vmmon)
-/usr/src/linux-headers-`uname -r`/scripts/sign-file sha256 ~/vmware-mok.priv ~/vmware-mok.der $(modinfo -n vmnet)
+openssl req -new -x509 -newkey rsa:2048 -keyout ~/$MOK_PRIV -outform DER -out ~/$MOK_DER -nodes -days 36500 -subj "/CN=VMware/"
+/usr/src/linux-headers-`uname -r`/scripts/sign-file sha256 ~/$MOK_PRIV ~/$MOK_DER $(modinfo -n vmmon)
+/usr/src/linux-headers-`uname -r`/scripts/sign-file sha256 ~/$MOK_PRIV ~/$MOK_DER $(modinfo -n vmnet)
 
 echo
 echo "Please set a password (BIOS will ask you for this password when the computer is rebooted to apply the key)"
-mokutil --import ~/vmware-mok.der
+mokutil --import ~/$MOK_DER
 
 echo
-echo "Reboot your computer to finish the installation"
+echo "### IMPORTANT: Reboot your computer and follow BIOS instructions to finish the installation ###"
 echo
